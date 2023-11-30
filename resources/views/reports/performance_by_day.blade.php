@@ -95,7 +95,6 @@
 
 @endsection
 
-
 @section('scripts')
     <script>
         var ctx = document.getElementById('myChart').getContext('2d');
