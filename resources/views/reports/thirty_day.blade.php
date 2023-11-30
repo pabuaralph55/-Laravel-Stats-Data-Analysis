@@ -4,7 +4,7 @@
 
 @section('content')
 <h1>30-day Report</h1>
-<form action="{{ route('reports.thirty_day') }}" method="GET" class="row g-3 align-items-end">
+<form action="#" method="GET" class="row g-3 align-items-end">
     <div class="col-auto">
         <label for="start_date" class="form-label mb-0">Start Date</label>
         <input type="date" id="start_date" name="start_date" class="form-control" 
@@ -31,7 +31,8 @@
         <tr>
             <th>#</th> 
             <th>
-                <a href="{{ route('reports.thirty_day', ['sortColumn' => 'day', 'sortOrder' => request('sortOrder', 'asc') == 'asc' ? 'desc' : 'asc']) }}">
+                <a href="{{ route('reports.thirty_day', ['start_date' => request('start_date'), 
+                    'end_date' => request('end_date'),'sortColumn' => 'day', 'sortOrder' => request('sortOrder', 'asc') == 'asc' ? 'desc' : 'asc']) }}">
                     Day
                     @if (request('sortColumn') == 'day')
                         {!! request('sortOrder', 'asc') == 'asc' ? '&#x25BC;' : '&#x25B2;' !!}
@@ -39,7 +40,8 @@
                 </a>
             </th>
             <th>
-                <a href="{{ route('reports.thirty_day', ['sortColumn' => 'total_impressions', 'sortOrder' => request('sortOrder', 'asc') == 'asc' ? 'desc' : 'asc']) }}">
+                <a href="{{ route('reports.thirty_day', ['start_date' => request('start_date'), 
+                    'end_date' => request('end_date'), 'sortColumn' => 'total_impressions', 'sortOrder' => request('sortOrder', 'asc') == 'asc' ? 'desc' : 'asc']) }}">
                     Impressions
                     @if (request('sortColumn') == 'total_impressions')
                         {!! request('sortOrder', 'asc') == 'asc' ? '&#x25BC;' : '&#x25B2;' !!}
@@ -47,7 +49,8 @@
                 </a>
             </th>
             <th>
-                <a href="{{ route('reports.thirty_day', ['sortColumn' => 'total_conversions', 'sortOrder' => request('sortOrder', 'asc') == 'asc' ? 'desc' : 'asc']) }}">
+                <a href="{{ route('reports.thirty_day', ['start_date' => request('start_date'), 
+                    'end_date' => request('end_date'), 'sortColumn' => 'total_conversions', 'sortOrder' => request('sortOrder', 'asc') == 'asc' ? 'desc' : 'asc']) }}">
                     Conversions
                     @if (request('sortColumn') == 'total_conversions')
                         {!! request('sortOrder', 'asc') == 'asc' ? '&#x25BC;' : '&#x25B2;' !!}
@@ -55,7 +58,8 @@
                 </a>
             </th>
             <th>
-                <a href="{{ route('reports.thirty_day', ['sortColumn' => 'conversion_rate', 'sortOrder' => request('sortOrder', 'asc') == 'asc' ? 'desc' : 'asc']) }}">
+                <a href="{{ route('reports.thirty_day', ['start_date' => request('start_date'), 
+                    'end_date' => request('end_date'), 'sortColumn' => 'conversion_rate', 'sortOrder' => request('sortOrder', 'asc') == 'asc' ? 'desc' : 'asc']) }}">
                     Conversion Rate
                     @if (request('sortColumn') == 'conversion_rate')
                         {!! request('sortOrder', 'asc') == 'asc' ? '&#x25BC;' : '&#x25B2;' !!}

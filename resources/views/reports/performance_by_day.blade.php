@@ -14,7 +14,9 @@
             <select id="country" name="country" class="form-control">
                 <option value="">Select Country</option>
                 @foreach ($countries as $country)
-                    <option value="{{ $country->iso }}">{{ $country->name }}</option>
+                    <option value="{{ $country->iso }}" {{ request('country') == $country->iso ? 'selected' : '' }}>
+                        {{ $country->name }}
+                    </option>
                 @endforeach
             </select>
         </div>
@@ -22,7 +24,9 @@
             <select id="publisher" name="publisher" class="form-control">
                 <option value="">Select Publisher</option>
                 @foreach ($publishers as $publisher)
-                    <option value="{{ $publisher->id }}">{{ $publisher->name }}</option>
+                    <option value="{{ $publisher->id }}" {{ request('publisher') == $publisher->id ? 'selected' : '' }}>
+                        {{ $publisher->name }}
+                    </option>
                 @endforeach
             </select>
         </div>
@@ -30,13 +34,18 @@
             <button id="retrieve_data" type="submit" class="btn btn-primary">Retrieve Data</button>
         </div>
     </form>
-
+    
     <table>
         <thead>
             <tr>
                 <th>#</th> 
                 <th>
-                    <a href="{{ route('reports.performance_by_day', ['sortColumn' => 'day', 'sortOrder' => request('sortOrder', 'asc') == 'asc' ? 'desc' : 'asc']) }}">
+                    <a href="{{ route('reports.performance_by_day', array_filter([
+                        'country' => request('country'), 
+                        'publisher' => request('publisher'), 
+                        'sortColumn' => 'day', 
+                        'sortOrder' => request('sortOrder', 'asc') == 'asc' ? 'desc' : 'asc'
+                    ])) }}">
                         Day
                         @if (request('sortColumn') == 'day')
                             {!! request('sortOrder', 'asc') == 'asc' ? '&#x25BC;' : '&#x25B2;' !!}
@@ -44,7 +53,12 @@
                     </a>
                 </th>
                 <th>
-                    <a href="{{ route('reports.performance_by_day', ['sortColumn' => 'android_conversion_rate', 'sortOrder' => request('sortOrder', 'asc') == 'asc' ? 'desc' : 'asc']) }}">
+                    <a href="{{ route('reports.performance_by_day', array_filter([
+                        'country' => request('country'), 
+                        'publisher' => request('publisher'), 
+                        'sortColumn' => 'android_conversion_rate', 
+                        'sortOrder' => request('sortOrder', 'asc') == 'asc' ? 'desc' : 'asc'
+                    ])) }}">
                         Android
                         @if (request('sortColumn') == 'android_conversion_rate')
                             {!! request('sortOrder', 'asc') == 'asc' ? '&#x25BC;' : '&#x25B2;' !!}
@@ -52,7 +66,12 @@
                     </a>
                 </th>
                 <th>
-                    <a href="{{ route('reports.performance_by_day', ['sortColumn' => 'ipad_conversion_rate', 'sortOrder' => request('sortOrder', 'asc') == 'asc' ? 'desc' : 'asc']) }}">
+                    <a href="{{ route('reports.performance_by_day', array_filter([
+                        'country' => request('country'), 
+                        'publisher' => request('publisher'), 
+                        'sortColumn' => 'ipad_conversion_rate', 
+                        'sortOrder' => request('sortOrder', 'asc') == 'asc' ? 'desc' : 'asc'
+                    ])) }}">
                         iPad
                         @if (request('sortColumn') == 'ipad_conversion_rate')
                             {!! request('sortOrder', 'asc') == 'asc' ? '&#x25BC;' : '&#x25B2;' !!}
@@ -60,7 +79,12 @@
                     </a>
                 </th>
                 <th>
-                    <a href="{{ route('reports.performance_by_day', ['sortColumn' => 'iphone_conversion_rate', 'sortOrder' => request('sortOrder', 'asc') == 'asc' ? 'desc' : 'asc']) }}">
+                    <a href="{{ route('reports.performance_by_day', array_filter([
+                        'country' => request('country'), 
+                        'publisher' => request('publisher'), 
+                        'sortColumn' => 'iphone_conversion_rate', 
+                        'sortOrder' => request('sortOrder', 'asc') == 'asc' ? 'desc' : 'asc'
+                    ])) }}">
                         iPhone
                         @if (request('sortColumn') == 'iphone_conversion_rate')
                             {!! request('sortOrder', 'asc') == 'asc' ? '&#x25BC;' : '&#x25B2;' !!}
@@ -81,6 +105,7 @@
             @endforeach
         </tbody>
     </table>
+    
 @endsection
 
 @section('styles')
