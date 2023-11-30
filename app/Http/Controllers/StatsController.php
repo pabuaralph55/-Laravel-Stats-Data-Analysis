@@ -186,7 +186,6 @@ class StatsController extends Controller
         $countries = DB::table('country')->get();
         $publishers = DB::table('publisher')->get();
 
-        // return view('reports.performance_by_day', compact('performances','countries','publishers'));
         return view('reports.performance_by_day', compact('performances', 'countries', 'publishers', 'labels', 'androidConversionRates', 'ipadConversionRates', 'iphoneConversionRates'));
     }
 
