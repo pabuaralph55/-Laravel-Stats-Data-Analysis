@@ -88,8 +88,9 @@ class StatsController extends Controller
       
         $showingDefaultData = false;
 
-        $startDate = $request->input('start_date');
-        $endDate = $request->input('end_date');
+        $startDate = $request->input('start_date', Carbon::now()->subDays(29)->toDateString());
+        $endDate = $request->input('end_date', Carbon::now()->toDateString());
+
         $sortColumn = $request->input('sortColumn', 'day');
         $sortOrder = $request->input('sortOrder', 'asc'); 
 

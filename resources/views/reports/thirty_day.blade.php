@@ -8,12 +8,12 @@
     <div class="col-auto">
         <label for="start_date" class="form-label mb-0">Start Date</label>
         <input type="date" id="start_date" name="start_date" class="form-control" 
-               value="{{ request('start_date', \Carbon\Carbon::now()->subDays(29)->toDateString()) }}">
+                value="{{ request('start_date') }}">
     </div>
     <div class="col-auto">
         <label for="end_date" class="form-label mb-0">End Date</label>
         <input type="date" id="end_date" name="end_date" class="form-control" 
-               value="{{ request('end_date', \Carbon\Carbon::now()->toDateString()) }}">
+                value="{{ request('end_date') }}">
     </div>
     <div class="col-auto">
         <button id="retrieve_data" type="submit" class="btn btn-primary">Retrieve Data</button>
