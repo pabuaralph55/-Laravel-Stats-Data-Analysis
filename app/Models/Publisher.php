@@ -14,9 +14,4 @@ class Publisher extends Model
     protected $fillable = [
         'name',
     ];
-
-    public function stats()
-    {
-        return $this->hasMany(Stat::class);
-    }
 }

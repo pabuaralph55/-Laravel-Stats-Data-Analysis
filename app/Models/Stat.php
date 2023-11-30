@@ -19,9 +19,4 @@ class Stat extends Model
         'impressions',
         'conversions',
     ];
-
-    // public function publisher()
-    // {
-    //     return $this->belongsTo(Publisher::class);
-    // }
 }
